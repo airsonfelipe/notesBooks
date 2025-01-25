@@ -35,11 +35,11 @@ def init_db():
 
 # Busca no site worldhistory.org
 def search_worldhistory(query):
-    url = f"https://www.worldhistory.org/search/?q={query}"
+    url = f"https://www.www.google.com/search/?q={query}"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     results = soup.find_all('div', class_='search-result')
-    return [{"title": r.find('h3').text, "link": "https://www.worldhistory.org" + r.find('a')['href']} for r in results]
+    return [{"title": r.find('h3').text, "link": "https://www.google.com" + r.find('a')['href']} for r in results]
 
 
 # Página inicial: lista de livros
@@ -156,7 +156,7 @@ def search_note_on_worldhistory(note_id):
 
     if note:
         query = note[0]
-        search_url = f"https://www.worldhistory.org/search/?q={query}"
+        search_url = f"https://www.google.com/search/?q={query}"
         return redirect(search_url)
     return redirect("/")
 

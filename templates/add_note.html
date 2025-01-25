@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Note</title>
+</head>
+<body>
+    <h1>Add a Note to the Book</h1>
+    <form method="POST" action="/book/{{ book_id }}/add_note">
+        <label for="content">Note Content:</label>
+        <textarea id="content" name="content" required></textarea>
+        <br>
+        <button type="submit">Add Note</button>
+    </form>
+</body>
+</html>

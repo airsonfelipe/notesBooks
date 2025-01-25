@@ -1,0 +1,8 @@
+<center><h1>Notes of Books</h1></center>
+<h2>Books</h2>
+<ul>
+    {% for book in books %}
+        <li><a href="/book/{{ book[0] }}">{{ book[1] }}</a> (<a href="/book/{{ book[0] }}/delete">Excluir</a>)</li>
+    {% endfor %}
+</ul>
+<a href="/add_book">Adicionar Livro</a>

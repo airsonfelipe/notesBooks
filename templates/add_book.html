@@ -6,6 +6,9 @@
     <title>Add Book</title>
 </head>
 <body>
+<nav>
+        <a href="{{ url_for('index') }}">Home</a>
+    </nav>
     <h1>Add a New Book</h1>
     <form method="POST" action="/add_book">
         <label for="book_name">Book Name:</label>

@@ -4,49 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ book[1] }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        nav a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: blue;
-        }
-        h1 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            margin-left: 10px;
-            text-decoration: none;
-            color: darkgreen;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .button {
-            display: inline-block;
-            padding: 5px 10px;
-            margin-top: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <nav>
@@ -59,14 +17,15 @@
     <ul>
         {% for note in notes %}
         <li>
-            <pre style="white-space: pre-wrap;">{{ note[1] }}</pre>
+            <pre class="note-content">{{ note[1] }}</pre>
             <a href="{{ url_for('edit_note', note_id=note[0]) }}">Editar</a>
-            <a href="{{ url_for('delete_note', note_id=note[0]) }}">Excluir</a>
-            <a href="{{ url_for('search_note_on_worldhistory', note_id=note[0]) }}" target="_blank">Buscar no WorldHistory</a>
+            <a href="{{ url_for('delete_note', note_id=note[0]) }}" onclick="return confirm('Tem certeza que deseja excluir esta nota?')">Excluir</a>
+            <a href="https://www.google.com/search?q={{ note[1] | urlencode }}" target="_blank">Buscar no Google</a>
         </li>
         {% endfor %}
     </ul>
 
+    <!-- Botão de Adicionar Nota -->
     <a href="{{ url_for('add_note_to_book', book_id=book[0]) }}" class="button">Adicionar Nota</a>
 </body>
 </html>
